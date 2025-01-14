@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaify - Wahyu's Personal Website</title>
+
+    <!-- Meta tags for SEO and Open Graph -->
+    <meta name="description" content="Seorang mahasiswa IT yang antusias dengan dunia pemrograman">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Kaify - Kai's Personal Website">
+    <meta property="og:description" content="Seorang mahasiswa IT yang antusias dengan dunia pemrograman">
+    <meta property="og:url" content="https://kaify.vercel.app">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kaify - Kai's Personal Website">
+    <meta name="twitter:description" content="Seorang mahasiswa IT yang antusias dengan dunia pemrograman">
+
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: rgb(10, 10, 10);
+            /* background: linear-gradient(30deg, rgba(10, 10, 10, 0.113), rgba(49, 0, 8, 0.022)); */
+        }
+
+        .logo-text {
+            background: linear-gradient(90deg, #7f1d1d, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-shadow {
+            text-shadow: 2px 2px 10px rgba(127, 29, 29, 0.5), 2px 2px 15px rgba(244, 63, 94, 0.5);
+        }
+
+        .photo-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-aura {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.5), rgba(244, 63, 94, 0) 70%);
+            z-index: 0;
+            filter: blur(20px);
+        }
+
+        .photo {
+            position: relative;
+            z-index: 1;
+            filter: saturate(0.5) contrast(1.2);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                background: linear-gradient(30deg, rgba(10, 10, 10) 70%, rgba(202, 27, 27, 0.696) 350%);
+                background-size: 125%;
+                animation-duration: 2s;
+                animation-name: anim1;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            [data-aos="fade-right"],
+            [data-aos="fade-left"] {
+                transform: translateX(0) !important;
+                overflow: hidden;
+            }
+        }
+
+        @keyframes anim1 {
+            0% {
+                background-position: -100px;
+            }
+
+            100% {
+                background-position: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-300 min-h-screen">
+    <header class="shadow-md lg:shadow-none bg-[#16161611] lg:bg-transparent">
+        <div class="max-w-screen-xl mx-auto flex justify-between items-center py-5 px-5 lg:px-14">
+            <h2 class="font-bold text-2xl lg:text-4xl logo-text tracking-wider"><a href="/">Kaify</a></h2>
+            <button id="navbar-toggle"
+                class="inline-flex items-center p-2 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <nav id="navbar-default" class="hidden md:flex md:space-x-6">
+                <a href="/#"
+                    class="px-4 py-2 text-gray-300 hover:text-gray-100 hover:bg-gray-700 rounded-lg transition font-semibold">Home</a>
+                <a href="/#projects"
+                    class="px-4 py-2 text-gray-300 hover:text-gray-100 hover:bg-gray-700 rounded-lg transition font-semibold">Projects</a>
+                <a href="#"
+                    class="px-6 py-2 rounded-full bg-red-600 text-white hover:bg-red-500 transition font-semibold loginBtn">Login</a>
+            </nav>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <nav class="flex flex-col space-y-4 px-5 m-auto max-w-full mb-5">
+                <a href="/"
+                    class="px-4 max-w-full py-2 m-auto text-gray-300 hover:text-gray-100 hover:bg-gray-700 rounded transition font-semibold">Home</a>
+                <a href="/#projects"
+                    class="px-4 max-w-full py-2 m-auto text-gray-300 hover:text-gray-100 hover:bg-gray-700 rounded transition font-semibold">Projects</a>
+                <a href="#"
+                    class="px-6 max-w-full py-2 m-auto rounded-full bg-red-600 text-white hover:bg-red-500 transition font-semibold loginBtn">Login</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <section
+        class="container mx-auto mt-10 flex flex-col lg:flex-row items-center justify-evenly space-y-8 lg:space-y-0 lg:space-x-10 p-5" data-aos-duration="1000" data-aos="fade" data-aos-delay="250">
+        <div class="bg-[#ffffff10] px-10 py-8 rounded-xl mt-5">
+            <div class="flex justify-center font-bold text-2xl mb-8" data-aos-duration="1000" data-aos="flip-up" data-aos-delay="500">
+                <h1 class="text-red-600 mr-2 text-3xl">404</h1>
+                <h1 class="my-auto">
+                    Page Not Found!
+                </h1>
+            </div>
+            <a class="text-base text-red-600 float-start" href="/" data-aos-duration="1000" data-aos="fade" data-aos-delay="1000">Kembali</a>
+        </div>
+    </section>
+
+    <footer class="mt-20 text-center p-5">
+        <p class="text-gray-500">© 2024 Kaify. All rights reserved.</p>
+    </footer>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content w-[300px] lg:w-[400px]">
+            <span class="close">&times;</span>
+            <h2 class="text-gray-100 font-bold w-full text-center text-xl mb-4">Login</h2>
+            <form action="/p/login" method="post">
+                <div class="mb-4">
+                    <label for="username" class="text-gray-400">Username</label>
+                    <input type="text" id="username"  name="username"
+                        class="w-full p-2 mt-1 bg-gray-800 text-gray-300 border border-gray-600 rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="text-gray-400">Password</label>
+                    <input type="password" id="password" name="password"
+                        class="w-full p-2 mt-1 bg-gray-800 text-gray-300 border border-gray-600 rounded" required>
+                </div>
+                <button type="submit"
+                    class="w-full px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500 transition mt-5">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/general.js"></script>
+
+</body>
+
+</html>
